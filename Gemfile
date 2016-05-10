@@ -45,3 +45,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'paperclip'
+gem 'bootstrap-sass'
+gem 'bootstrap-sass-extras'
+gem 'nokogiri'
