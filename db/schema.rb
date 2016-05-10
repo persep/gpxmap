@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510101319) do
+ActiveRecord::Schema.define(version: 20160510102811) do
+
+  create_table "points", force: :cascade do |t|
+    t.integer  "tracksegment_id"
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "elevation"
+    t.string   "description"
+    t.datetime "point_created_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "points", ["tracksegment_id"], name: "index_points_on_tracksegment_id"
 
   create_table "tracks", force: :cascade do |t|
     t.string   "name"
@@ -22,5 +36,13 @@ ActiveRecord::Schema.define(version: 20160510101319) do
     t.integer  "gpx_file_size"
     t.datetime "gpx_updated_at"
   end
+
+  create_table "tracksegments", force: :cascade do |t|
+    t.integer  "track_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tracksegments", ["track_id"], name: "index_tracksegments_on_track_id"
 
 end
