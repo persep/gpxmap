@@ -8,7 +8,16 @@ class Track < ActiveRecord::Base
 	# Required a content_type validation, 
 	# a file_name validation, 
 	# or to explicitly state that they're not going to have either.
-	validates_attachment_file_name :gpx, matches: /gpx\Z/ #
+	
 	validates :name, presence: true
 	validates :gpx, presence: true
+	validates_attachment_file_name :gpx, matches: /gpx\Z/ #
+
+	# This is because paperclip duplicates error messages with the file_name validator 
+	# or any other validator See: https://github.com/thoughtbot/paperclip/pull/1554
+	after_validation :clean_paperclip_errors
+
+  	def clean_paperclip_errors
+    	errors.delete(:gpx_file_name)
+  	end
 end
