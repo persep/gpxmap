@@ -1,4 +1,15 @@
 <%= form_for @track, html: { class: 'form-horizontal' } do |f| %>
+  <% if @track.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@track.errors.count, "error") %> prohibited from being saved:</h2>
+        <ul>
+          <% @track.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+  
   <div class="form-group">
     <%= f.label :name, class: 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -6,31 +17,13 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :gpx_file_name, class: 'control-label col-md-2' %>
+    <%= f.label :gpx, class: 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :gpx_file_name, class: 'text_field form-control' %>
+      <%= f.file_field :gpx %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :gpx_content_type, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :gpx_content_type, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :gpx_file_size, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :gpx_file_size, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :gpx_updated_at, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :gpx_updated_at, class: 'text_field form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
+  
+    <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, class: 'btn btn-primary' %>
       <%= link_to t('.cancel', default: t("helpers.links.cancel")),
