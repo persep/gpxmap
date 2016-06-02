@@ -18,6 +18,33 @@
   </dl>
 </div>
 
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Point No.</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Elevation</th>
+        <th>Description</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @track.points.each do |point| %>
+        <tr>
+          <td><%= point.id %></td>
+          <td><%= point.name %></td>
+          <td><%= point.latitude %></td>
+          <td><%= point.longitude %></td>
+          <td><%= point.elevation %></td>
+          <td><%= point.description %></td>
+          <td><%= point.point_created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 <div class="form-group">
   <%= link_to t('.back', default: t("helpers.links.back")),
               tracks_path, class: 'btn btn-default'  %>

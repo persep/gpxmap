@@ -26,7 +26,6 @@ class Track < ActiveRecord::Base
 
 	  	def parse_file
 	  		tempfile = gpx.queued_for_write[:original]
-	  		byebug
 	  		doc = Nokogiri::XML(tempfile)
 	  		parse_xml(doc)
 	  	end
