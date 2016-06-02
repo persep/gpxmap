@@ -17,7 +17,10 @@ class Track < ActiveRecord::Base
 	# or any other validator See: https://github.com/thoughtbot/paperclip/pull/1554
 	after_validation :clean_paperclip_errors
 
-  	def clean_paperclip_errors
-    	errors.delete(:gpx_file_name)
-  	end
+	before_save :parse_file
+
+	private
+  		def clean_paperclip_errors
+    		errors.delete(:gpx_file_name)
+	  	end
 end
