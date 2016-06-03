@@ -19,6 +19,14 @@ class Track < ActiveRecord::Base
 
 	before_save :parse_file #This callback executes the parser function every time we upload a file.
 
+	def polyline
+		Polylines::Encoder.encode_points(self.polyline_points)
+	end
+
+	def polyline_points
+		self.points.map(&:latlng)
+	end
+
 	private
   		def clean_paperclip_errors
     		errors.delete(:gpx_file_name)
