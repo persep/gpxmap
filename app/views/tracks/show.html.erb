@@ -18,6 +18,8 @@
   </dl>
 </div>
 
+<% 
+=begin %>
 <table class="table table-striped">
     <thead>
       <tr>
@@ -44,8 +46,8 @@
       <% end %>
     </tbody>
   </table>
-
-<div id="map_canvas" style="height: 600px;"></div>
+<% 
+=end %>
 
 <div class="form-group">
   <%= link_to t('.back', default: t("helpers.links.back")),
@@ -58,3 +60,7 @@
               data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
               class: 'btn btn-danger' %>
 </div>
+
+<div id="map_canvas" style="height: 600px;"></div>
+
+
