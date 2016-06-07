@@ -4,6 +4,7 @@
   <title>Gpxmap</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= google_maps_api %>
+  <%= track_id_to_js(@track.id) if @track %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
