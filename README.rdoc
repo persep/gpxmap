@@ -305,10 +305,6 @@ def show
   Add in helpers/tracks_helper.rb
 
   module TracksHelper
-	def google_maps_api_key
-		"AIzaSyCBUCpPgwZWFtpTgaiv-QMvug54Dn4vmY8"
-	end
-
 	def google_api_url
 		"http://maps.googleapis.com/maps/api/js"
 	end
@@ -361,6 +357,9 @@ Add to views/tracks/index.html.erb
 
 So that the page loas the GM js to display the map
 
+$ git add .
+$ git commit -m 'Solution for turbolinks js not loading'
+
 Add to helpers/tracks_helper.rb
 	def track_id_to_js(id)
 		content_tag(:script, :type => "text/javascript") do
@@ -399,3 +398,15 @@ calc_bounds = (track_path) ->
 $ ->
   map = gm_init()
   load_track(js_track_id,map
+
+$ git add .
+$ git commit -m 'Add track display'
+
+Removed api key assets/helpers/tracks_helper.rb and changed google maps url to version 3
+
+def google_api_access
+		"#{google_api_url}?v=3.exp&libraries=geometry"
+	end
+
+$ git add .
+$ git commit -m 'Remove v2 api for google maps'
