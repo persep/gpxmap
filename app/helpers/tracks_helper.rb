@@ -1,14 +1,10 @@
 module TracksHelper
-	def google_maps_api_key
-		"AIzaSyCBUCpPgwZWFtpTgaiv-QMvug54Dn4vmY8"
-	end
-
 	def google_api_url
 		"http://maps.googleapis.com/maps/api/js"
 	end
 
 	def google_api_access
-		"#{google_api_url}?key=#{google_maps_api_key}&libraries=geometry"
+		"#{google_api_url}?v=3.exp&libraries=geometry"
 	end
 
 	def google_maps_api
