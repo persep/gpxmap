@@ -26,7 +26,7 @@
           <td><%= track.gpx_updated_at %></td>
         <td><%=l track.created_at, format: :long %></td>
         <td>
-          <%= link_to track_path(track), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }", 'data-no-turbolink':  true do %>
+          <%= link_to track_path(track), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
           <%- end -%>
           <%= link_to edit_track_path(track), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>

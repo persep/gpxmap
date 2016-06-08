@@ -7,9 +7,7 @@ gm_init = ->
   gm_map_type = google.maps.MapTypeId.SATELLITE 
   map_options = {center: gm_center, zoom: 8, mapTypeId: gm_map_type}
   new google.maps.Map(@map_canvas,map_options);
-$ ->
-  map = gm_init()
-  load_track(js_track_id,map)
+
 
 load_track = (id,map) ->
   callback = (data) -> display_on_map(data,map)
@@ -31,3 +29,7 @@ calc_bounds = (track_path) ->
   b.extend(gm_path.getAt(i[0]))
   b.extend(gm_path.getAt(i[1]))
   b.extend(gm_path.getAt(i[2]))
+
+$(document).on "page:change", ->
+  map = gm_init()
+  load_track(js_track_id,map)

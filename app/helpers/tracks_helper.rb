@@ -13,7 +13,7 @@ module TracksHelper
 	end
 
 	def track_id_to_js(id)
-		content_tag(:script, :type => "text/javascript") do
+		content_tag(:script, :type => "text/javascript", 'data-turbolinks-track' => 'always' ) do
 			"var js_track_id = "+id.to_s;
 		end
 	end
