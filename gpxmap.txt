@@ -408,3 +408,20 @@ def google_api_access
 
 $ git add .
 $ git commit -m 'Remove v2 api for google maps'
+
+Remove the 'data-no-turbolink':  true in views/tracks/index.html.erb
+
+Change in assets/javascripts/tracks.coffee
+
+$(document).on "page:change", ->
+  map = gm_init()
+  load_track(js_track_id,map)
+
+To load the map and in assets/helpers/tracks_helper.rb
+
+def track_id_to_js(id)
+		content_tag(:script, :type => "text/javascript", 'data-turbolinks-track' => 'always' ) do
+			"var js_track_id = "+id.to_s;
+		end
+	end
+
